@@ -15,9 +15,6 @@ app.get("/",(req,res)=>{
 });
 
 
-app.get("/whoami",(req,res)=>{
-    res.send("Hi,I'm PUSKAR");
-});
 app.listen(8080,()=>{
     console.log("Server is working");
 });
