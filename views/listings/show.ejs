@@ -1,21 +1,28 @@
 <% layout('/layouts/boilerplates') -%>
-  <body>
+<div class="row">
+  <div class="col-8 offset-2 mt-3">
     <h3>Listing Details:</h3>
-    <ul>
-      <li><%= listing.title %></li>
-      <li><%= listing.description %></li>
-      <li>&#8377; <%= listing.price.toLocaleString("en-IN") %></li>
-      <li><%= listing.location %></li>
-      <li><%= listing.country %></li>
-    </ul>
-    <br />
-    <img src="<%= listing.image.url %>" alt="<%= listing.title %>" />
-    <br /><br />
-    <a href="/listings/<%= listing._id %>/edit">Edit this Listing</a>
-    <br /><br />
-    <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
-      <button>Delete this listing</button>
-    </form>
-  </body>
+  </div>
+  <div class="card col-8 offset-2 mt-3">
+    <img src="<%=listing.image.url || listing.image %>" class="card-img-top show-img" alt="<%= listing.title %> image">
+    <div class="card-body">
+      <h4 class="card-title"><b><%= listing.title %></b></h4>
+      <p class="card-text">
+        <%= listing.description %>
+        <br>
+        <b>Price:</b> &#8377; <%= listing.price.toLocaleString("en-IN") %>
+        <br>
+        <b>Location:</b> <%= listing.location %>, <%= listing.country %>
+      </p>
+      <div class="d-flex justify-content-between mt-3">
+        <a href="/listings/<%= listing._id %>/edit" class="btn btn-primary">Edit this Listing</a>
+        <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+          <button class="btn btn-danger">Delete this Listing</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 

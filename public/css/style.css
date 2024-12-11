@@ -1,3 +1,12 @@
+body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.container{
+  flex: 1;
+}
+
 .navbar {
   height: 5rem;
   background-color: white;
@@ -71,4 +80,31 @@
 .card-img-overlay:hover{
   opacity: 0.2;
   background-color: white;
+}
+
+/*new*/
+.add-btn{
+  background-color: #fe424d !important;
+border: none !important;
+opacity:1;
+}
+.add-btn:hover{
+  opacity:0.8;
+  background-color: #fe424d !important;
+
+}
+/*edit*/
+.edit-btn{
+  background-color: #fe424d !important;
+border: none !important;
+opacity:1;
+}
+.edit-btn:hover{
+  opacity:0.8;
+  background-color: #fe424d !important;
+
+}
+/*show*/
+.show-img{
+  height: 30vh;
 }
