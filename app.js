@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 const Listing = require("./models/listing.js");
 const path = require("path");
 const methodOverride = require("method-override");
-const initData = require("./init/data.js"); // Correct import path for data.js
-const initDB = require("./init/index.js"); // Correct import path for index.js
+const initData = require("./init/data.js");
+const initDB = require("./init/index.js"); 
 
 const ejsMate = require("ejs-mate");
 
