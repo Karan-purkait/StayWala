@@ -7,7 +7,7 @@ const methodOverride = require("method-override");
 const initData = require("./init/data.js");
 const initDB = require("./init/index.js"); 
 
-const ejsMate = require("ejs-mate");
+const ejsMate =  require("ejs-mate");
 
 
 
