@@ -12,7 +12,8 @@
                   <p class="card-text text-center">
                     <div class="card-img-overlay"></div>
                     <b><%= listing.title %></b> 
-                    &#8377;<%= listing.price.toLocaleString("en-IN") %>/night
+                    &#8377;<%= listing.price ? listing.price.toLocaleString("en-IN") : '0' %>/night
+
                   </p>
                 </div>
               </div>

@@ -4,7 +4,7 @@
   <body>
     <h3>Create a New Listing</h3>
     <br>
-    <form method="POST" action="/listings">
+    <form method="POST" action="/listings" novalidate class="needs-validation">
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input name="listing[title]" placeholder="Enter title" type="text" class="form-control"/>
@@ -13,28 +13,33 @@
       <div class="mb-3">
         <label for="description" class="form-label">Description</label>
         <textarea name="listing[description]" placeholder="Enter description" class="form-control"></textarea>
+        <div class="invalid-feedback">Please Enter a valid Description</div>
       </div>
       
      <div class="mb-3">
       <label for="image" class="form-label">Image Link</label>
-      <input name="listing[image]" placeholder="Enter image URL" type="text"  class="form-control" />
+      <input name="listing[image]" placeholder="Enter image URL" type="text"  class="form-control" required />
+     
      </div>
 
      <div class="mb-3">
 
       <label for="price" class="form-label">Price</label>
-      <input name="listing[price]" placeholder="Enter price" type="number"  class="form-control" />
+      <input name="listing[price]" placeholder="Enter price" type="number"  class="form-control" required />
+      <div class="invalid-feedback">Please Enter a valid Price </div>
      </div>
 
       <div class="mb-3">
         <label for="country" class="form-label">Country</label>
-        <input name="listing[country]" placeholder="Enter country" type="text"  class="form-control" />
+        <input name="listing[country]" placeholder="Enter country" type="text"  class="form-control" required/>
+        <div class="invalid-feedback">Please Enter a valid Country </div>
       
       </div>
 
       <div class="mb-3">
         <label for="location" class="form-label">Location</label>
-        <input name="listing[location]" placeholder="Enter Location" type="text"  class="form-control" />
+        <input name="listing[location]" placeholder="Enter Location" type="text"  class="form-control" required/>
+        <div class="invalid-feedback">Please Enter a valid Price </div>
       
       </div>
       <br>

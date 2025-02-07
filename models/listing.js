@@ -6,14 +6,18 @@ const listingSchema = new mongoose.Schema({
   price: Number,
   location: String,
   country: String,
-  // Update image field to be an object containing filename and url
   image: {
     filename: String,
     url: String,
   },
+  reviews: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Review",
+    },
+  ],
 });
 
 const Listing = mongoose.model("Listing", listingSchema);
 
 module.exports = Listing;
-
