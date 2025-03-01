@@ -1,14 +1,16 @@
 {
   "name": "yolostay",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+ "scripts": {
+  "start": "node app.js",
+  "dev": "nodemon app.js"
+}
+,
   "keywords": [],
   "author": "Karan Purkait",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "ejs": "^3.1.10",
     "ejs-mate": "^4.0.0",
@@ -16,5 +18,8 @@
     "joi": "^17.13.3",
     "method-override": "^3.0.0",
     "mongoose": "^8.8.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
   }
 }
