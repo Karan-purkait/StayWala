@@ -137,7 +137,7 @@ app.put(
       };
       await Listing.findByIdAndUpdate(req.params.id, updatedListing, { new: true });
       res.redirect(`/listings/${req.params.id}`);
-    } catch (err) {
+    } catch  (err) {
       next(err);
     }
   }
