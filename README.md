@@ -32,6 +32,7 @@ StayWala aims to bridge the gap between mess owners and tenants by offering a us
 StayWala is built using modern web technologies:
 
 **Frontend:**
+- React js
 - HTML
 - CSS
 - Bootstrap
@@ -122,12 +123,12 @@ This project is licensed under the MIT License — feel free to use, share, and 
 
 For inquiries or collaborations, reach out via email:
 
-- **Karan Purkait** — purkaitkaran2003@gmail.com
+- Karan Purkait — purkaitkaran2003@gmail.com
 
-Or connect on [LinkedIn](https://www.linkedin.com/in/karan-purkait)
+Or connect on LinkedIn : https://www.linkedin.com/in/karan-purkait
 
 ---
 
 🌟 *Find your perfect stay with StayWala!* 🌟
 
->>>>>>> 9eee9a2989e9ed2caa455df86f031d0f14499562
+
