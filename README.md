@@ -4,6 +4,8 @@
 Welcome to **StayWala** — your one-stop platform for discovering affordable mess accommodations for students and travelers. Our mission is to simplify the process of finding comfortable stays by connecting mess owners with those seeking a place to live.
 root Route : http://localhost:8080/listings
 
+Contribute your code changes to the dev branch for review.
+
 ---
 
 ## 🚀 Project Overview
