@@ -1,16 +1,82 @@
 <footer>
     <div class="f-info">
         <div class="f-info-socials">
-            <i class="fa-brands fa-facebook"></i>
-            <i class="fa-brands fa-square-instagram"></i>
-        <i class="fa-brands fa-linkedin"></i>
-    </div>
-        <div class=".f-info-brand">StayWala Privet Limited</div>
+            <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
         
+        <div class="f-info-brand">StayWala Private Limited</div>
 
-            <div class="f-info-links">
-                <a href="/privacy">Privacy</a>
-                <a href="/terms">Terms</a>
-            </div>
+        <div class="f-info-links">
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+        </div>
     </div>
 </footer>
+
+<style>
+  /* Modern Footer Styling */
+  footer {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    padding: 20px 0;
+    color: white;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
+  }
+
+  .f-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .f-info-socials a {
+    font-size: 1.8rem;
+    margin: 0 12px;
+    color: white;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+    color: black;
+  }
+
+  .f-info-socials a:hover {
+    color: #ff9a9e;
+    transform: scale(1.2);
+  }
+
+  .f-info-brand {
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: black;
+  }
+
+  .f-info-links a {
+    color: black;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .f-info-links a:hover {
+    color: #ff7eb3;
+    text-decoration: underline;
+  }
+
+  /* Responsive Footer */
+  @media (max-width: 768px) {
+    .f-info {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .f-info-socials a {
+      font-size: 1.5rem;
+    }
+  }
+</style>
