@@ -7,7 +7,8 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const { listingSchema, reviewSchema } = require("./schema.js");
 const Review = require("./models/review.js");
-
+const statusMonitor = require('express-status-monitor');
+app.use(statusMonitor());
 // Custom Express Error Class
 class ExpressError extends Error {
   constructor(statusCode, message) {
