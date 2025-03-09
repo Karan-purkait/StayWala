@@ -1,0 +1,20 @@
+config:
+  target: "http://localhost:8080"
+  phases:
+    - duration: 60
+      arrivalRate: 50
+scenarios:
+  - flow:
+      - get:
+          url: "/listings"
+      - post:
+          url: "/listings"
+          json:
+            listing:
+              title: "Test Listing"
+              description: "This is a test."
+              location: "Test City"
+              country: "Testland"
+              price: 100
+              image:
+                url: "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"

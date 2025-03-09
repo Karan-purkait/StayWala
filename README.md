@@ -82,6 +82,14 @@ The app will run on: [http://localhost:8080](http://localhost:8080)
 
 ---
 
+## For Testing
+
+**Run the follwing command**
+
+```bash
+npx artillery run load-test.yml
+```
+
 ## 📁 Folder Structure
 
 ```
