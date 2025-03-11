@@ -51,8 +51,6 @@
 <style>
   /* Aesthetic Glassmorphism UI */
   body {
-    background: linear-gradient(135deg, #1f1c2c, #928dab);
-    color: #fff;
     font-family: 'Poppins', sans-serif;
   }
 
@@ -77,13 +75,14 @@
     border: none;
     padding: 12px;
     border-radius: 12px;
-    color: #fff;
+    color: var(--text-color);
     transition: all 0.3s ease-in-out;
   }
 
   .fancy-input:focus {
     background: rgba(255, 255, 255, 0.3);
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    color: var(--text-color);
     outline: none;
   }
 
