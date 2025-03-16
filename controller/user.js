@@ -2,7 +2,8 @@
 const Listing = require("../models/listing.js");
 const Review = require("../models/review.js");
 async function gethomepage(req,res){
-    res.send("Welcome to Wanderlust!");
+    //res.send("Welcome to Wanderlust!");
+    res.render("listings/home");
 }
 async function get_listings(req,res,next){
     try {
@@ -88,5 +89,6 @@ module.exports={
     edit_list_by_id,
     put_listings_id,
     delete_list_by_id,
-    post_review
+    post_review,
+    
 }
