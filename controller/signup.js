@@ -21,20 +21,12 @@ async function post_signup_page(req,res){
         }
 
         await User.create({Name:name, Email: email, Password: password });
-          // Set secure cookie with email
-        /*res.cookie("userEmail", email, {
-            httpOnly: true,
-            secure: false,
-            maxAge: 24 * 60 * 60 * 1000, // 1 day
-        });*/
-
-
-
-        res.redirect("/listings"); 
+        
+        return res.redirect("/signin"); 
     } catch (err) {
         console.error("Error:", err);
         req.session.error = "An error occurred while creating your account. Please try again.";
-        res.redirect("/signup");
+        return res.redirect("/signup");
     }
 }
 module.exports={
