@@ -4,10 +4,13 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const open = import("open"); // Use dynamic import for ESM modules
-const { listingSchema, reviewSchema } = require("./schema.js");
-const Listing = require("./models/listing.js");
-const Review = require("./models/review.js");
+const userrouter=require("./routes/user")
+
 const statusMonitor = require('express-status-monitor');
+
+const app = express();
+app.use(statusMonitor());
+
 // Custom Express Error Class
 class ExpressError extends Error {
   constructor(statusCode, message) {
@@ -17,7 +20,6 @@ class ExpressError extends Error {
   }
 }
 
-const app = express();
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
 // MongoDB Connection
@@ -41,6 +43,7 @@ app.engine("ejs", ejsMate);
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
+
 app.use(statusMonitor());
 
 // Middleware for validation
@@ -152,11 +155,15 @@ app.post("/listings/:id/reviews", validateReview, async (req, res, next) => {
   }
 });
 
+
+app.use("/",userrouter)
+
 // Error handler
 app.use((err, req, res, next) => {
   const { statusCode = 500, message = "Something went wrong" } = err;
-  res.status(statusCode).render("error", { message });
-});
+  //res.status(statusCode).render("error", { message });
+  res.status(statusCode).json({ Message: message });
+  });
 
 // Start the server
 const PORT = 8080;
@@ -165,4 +172,3 @@ app.listen(PORT, async () => {
   (await open).default(`http://localhost:${PORT}/listings`);
 });
 
-module.exports = app;
