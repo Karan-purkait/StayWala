@@ -1,6 +1,7 @@
 
 const Listing = require("../models/listing.js");
 const Review = require("../models/review.js");
+const ExpressError=require("../util/ExpressError")
 async function gethomepage(req,res){
     //res.send("Welcome to Wanderlust!");
     res.render("listings/home");
@@ -25,7 +26,7 @@ async function find_list_by_id(req,res,next){
         next(err);
     }
 }
-async function post_listing(req,res,next){
+/*async function post_listing(req,res,next){
     try {
         const newListing = {
         ...req.body.listing,
@@ -33,6 +34,16 @@ async function post_listing(req,res,next){
         };
         const listing = new Listing(newListing);
         await listing.save();
+        res.redirect("/listings");
+    } catch (err) {
+        next(err);
+    }
+}*/
+async function post_listing(req, res, next) {
+    try {
+        let { listing } = req.body;
+        const newListing = new Listing(listing);
+        await newListing.save();
         res.redirect("/listings");
     } catch (err) {
         next(err);
@@ -47,7 +58,7 @@ async function edit_list_by_id(req,res,next){
         next(err);
     }
 }
-async function put_listings_id(req,res,next){
+/*async function put_listings_id(req,res,next){
     try {
         const updatedListing = {
         ...req.body.listing,
@@ -58,7 +69,21 @@ async function put_listings_id(req,res,next){
     } catch (err) {
         next(err);
     }
+}*/
+async function put_listings_id(req, res, next) {
+    try {
+        let { listing } = req.body;
+        const updatedListing = await Listing.findByIdAndUpdate(
+            req.params.id,
+            { $set: listing }, // Using $set to ensure only provided fields are updated
+            { new: true, runValidators: true }
+        );
+        res.redirect(`/listings/${req.params.id}`);
+    } catch (err) {
+        next(err);
+    }
 }
+
 async function delete_list_by_id(req,res,next){
     try {
         await Listing.findByIdAndDelete(req.params.id);

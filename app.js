@@ -11,23 +11,14 @@ const statusMonitor = require('express-status-monitor');
 const app = express();
 app.use(statusMonitor());
 // Custom Express Error Class
-class ExpressError extends Error {
-  constructor(statusCode, message) {
-    super();
-    this.statusCode = statusCode;
-    this.message = message;
-  }
-}
+
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
 // MongoDB Connection
 async function main() {
   try {
-    await mongoose.connect(MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(MONGO_URL);
     console.log("Connected to MongoDB");
   } catch (err) {
     console.error("MongoDB connection error:", err);
