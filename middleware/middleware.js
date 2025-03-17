@@ -1,5 +1,6 @@
 // Middleware for validation
 const { listingSchema, reviewSchema } = require("../schema");
+const ExpressError=require("../util/ExpressError")
 const validateListing = (req, res, next) => {
     const { error } = listingSchema.validate(req.body);
     if (error) {
@@ -19,7 +20,24 @@ if (error) {
     next();
 }
 };
+const make_image_object = (req, res, next) => {
+  if (!req.body.listing) {
+      return next(new ExpressError(400, "Listing data is missing"));
+  }
+
+  let { listing } = req.body;
+
+  if (!listing.image || typeof listing.image === "string") {
+      listing.image = {
+          filename: "listingimage",
+          url: listing.image || "",
+      };
+  }
+
+  next();
+};
 module.exports={
     validateListing,
-    validateReview
+    validateReview,
+    make_image_object
 }

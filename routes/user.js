@@ -1,6 +1,8 @@
 const express = require("express");
 const { validateListing,
-    validateReview } = require("../middleware/middleware");
+    validateReview,
+    make_image_object } = require("../middleware/middleware");
+
 const app = express.Router();
 const { gethomepage,
     get_listings,
@@ -17,9 +19,10 @@ app.get("/",gethomepage);
 app.get("/listings",get_listings );
 app.get("/listings/new",get_listings_new );
 app.get("/listings/:id", find_list_by_id);
-app.post("/listings", validateListing, post_listing);
+app.post("/listings",make_image_object, validateListing, post_listing);
+//app.post("/listings",post_listing);
 app.get("/listings/:id/edit",edit_list_by_id);
-app.put("/listings/:id", validateListing,put_listings_id );
+app.put("/listings/:id",make_image_object, validateListing,put_listings_id );
 app.delete("/listings/:id",delete_list_by_id);
 app.post("/listings/:id/reviews", validateReview,post_review );
 module.exports=app;
