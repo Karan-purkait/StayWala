@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #2b6cb0;
+            --accent: #63b3ed;
+            --background: #ebf8ff;
+            --text: #1a202c;
+            --success: #48bb78;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 24px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: var(--accent);
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .form-container {
+            padding: 32px 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            font-size: 16px;
+            color: var(--text);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.3);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--secondary);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: var(--primary);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 24px;
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Create Account</h1>
+            <p>Join our community today</p>
+        </div>
+        <div class="form-container">
+            <% if (error) { %>
+                <div class="error-message" style="background-color: red; color: white; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+                    <%= error %>
+                </div>
+            <% } %>
+            <form id="signupForm" action="/signup" method="post" onsubmit="return validateForm(event)">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your mail ID" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required minlength="8">
+                    <small>Password must include uppercase, lowercase, number, and special character.</small>
+                </div>
+                <div class="form-group">
+                    <label for="confirm_Password">Confirm Password</label>
+                    <input type="password" id="confirm_Password" name="confirm_Password" placeholder="Enter your password" required minlength="8">
+                </div>
+                <button type="submit">Create Account</button>
+            </form>
+            <div class="footer">
+                Already have an account? <a href="/signin">Log in</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
