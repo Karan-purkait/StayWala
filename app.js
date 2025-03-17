@@ -46,7 +46,8 @@ app.use("/",userrouter)
 // Error handler
 app.use((err, req, res, next) => {
   const { statusCode = 500, message = "Something went wrong" } = err;
-  res.status(statusCode).render("error", { message });
+  //res.status(statusCode).render("error", { message });
+  res.status(statusCode).json({ Message: message });
   });
 
 // Start the server
@@ -56,4 +57,3 @@ app.listen(PORT, async () => {
   (await open).default(`http://localhost:${PORT}/listings`);
 });
 
-module.exports = app;

@@ -10,7 +10,8 @@ const { gethomepage,
     edit_list_by_id,
     put_listings_id,
     delete_list_by_id,
-    post_review } = require("../controller/user");
+    post_review,
+    } = require("../controller/user");
 // Routes
 app.get("/",gethomepage);
 app.get("/listings",get_listings );
