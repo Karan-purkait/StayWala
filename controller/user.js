@@ -73,6 +73,10 @@ async function edit_list_by_id(req,res,next){
 async function put_listings_id(req, res, next) {
     try {
         let { listing } = req.body;
+        // Ensure image is always an object
+        if (!listing.image || typeof listing.image === "string") {
+            listing.image = { filename: "", url: listing.image || "" };
+        }
         const updatedListing = await Listing.findByIdAndUpdate(
             req.params.id,
             { $set: listing }, // Using $set to ensure only provided fields are updated
@@ -105,6 +109,10 @@ async function post_review(req,res,next){
         next(err);
     }
 }
+async function user_logout(req,res){
+    res.clearCookie("auth_token");
+    return res.redirect("/");
+}
 module.exports={
     gethomepage,
     get_listings,
@@ -115,5 +123,5 @@ module.exports={
     put_listings_id,
     delete_list_by_id,
     post_review,
-    
+    user_logout,
 }
