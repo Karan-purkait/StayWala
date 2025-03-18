@@ -1,7 +1,22 @@
+:root {
+    --bg-color: #ebebeb;
+    --text-color: #000000;
+    --nav-bg: #f8f9fa;
+    --nav-text: #000000;
+}
+
+.dark-mode {
+    --bg-color: #1e1e1e;
+    --text-color: #ffffff;
+    --nav-bg: #2c2c2c;
+    --nav-text: #ffffff;
+}
 body{
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
 }
 .container{
   flex: 1;
@@ -9,17 +24,21 @@ body{
 
 .navbar {
   height: 5rem;
-  background-color: white;
+  background-color: var(--nav-bg) !important;
 }
 
 .nav-link {
-  color: #222222 !important;
+  color: var(--nav-text) !important;
+}
+
+#themeIcon {
+  color: var(--nav-text);
 }
 
 /* Footer */
 .f-info-links a {
   text-decoration: none;
-  color: #222222;
+  color: var(--text-color);
 }
 
 .f-info-links a:hover {
@@ -44,7 +63,7 @@ body{
 .f-info {
   text-align: center;
   height: 8rem;
-  background-color: #ebebeb;
+  background-color: var(--nav-bg);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -107,4 +126,9 @@ opacity:1;
 /*show*/
 .show-img{
   height: 30vh;
+}
+
+input::placeholder ,
+textarea::placeholder{
+  color: var(--text-color) !important;
 }

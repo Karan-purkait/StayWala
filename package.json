@@ -22,7 +22,7 @@
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
     "method-override": "^3.0.0",
-    "mongoose": "^8.8.4",
+    "mongoose": "^8.12.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "vite": "^6.2.0"
