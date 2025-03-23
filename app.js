@@ -13,22 +13,50 @@ const statusMonitor = require("express-status-monitor");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const { data: sampleListings } = require("./init/data"); // Import data file
-
+const cron = require('node-cron');
+const deleteOldData = require('./scripts/DataCleanup');
+require('dotenv').config();
+const helmet = require('helmet');
 const app = express();
-app.use(statusMonitor()); // Monitoring middleware
+app.use(helmet());
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "cdn.jsdelivr.net"],
+        styleSrc: ["'self'", "cdn.jsdelivr.net"],
+        imgSrc: ["'self'", "data:", "images.unsplash.com"],
+        fontSrc: ["'self'", "cdnjs.cloudflare.com"]
+    }
+}));
+const csrf = require('csurf');
+const csrfProtection = csrf({ cookie: true });
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+// Apply to all routes
+app.use(csrfProtection);
+const rateLimit = require('express-rate-limit');
+
+const authLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 5, // Limit each IP to 5 requests per window
+    message: 'Too many login attempts, please try again later'
+});
+
+app.use(statusMonitor()); // Monitoring middleware
 
 // **MongoDB Connection**
 async function main() {
   try {
-    await mongoose.connect(MONGO_URL);
+    await mongoose.connect(process.env.MONGODB_URI);;
     console.log("Connected to MongoDB");
   } catch (err) {
     console.error("MongoDB connection error:", err);
   }
 }
 main();
+cron.schedule('0 2 * * *', () => {
+  console.log('Running daily data cleanup...');
+  deleteOldData().catch(err => console.error('Cleanup error:', err));
+});
 
 // **View Engine & Static Files**
 app.set("view engine", "ejs");
@@ -40,9 +68,15 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 app.use(
   session({
-    secret: "Subha2003",
+    secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    cookie: {
+        secure: process.env.NODE_ENV === 'production',
+        httpOnly: true,
+        sameSite: 'Strict',
+        maxAge: 3600000 // 1 hour
+    }
   })
 );
 app.get("/listings", (req, res) => {
@@ -77,8 +111,8 @@ app.get("/listings", (req, res) => {
 // **Routes**
 
 app.use("/", userrouter);
-app.use("/signup", signuprouter);
-app.use("/signin", signinrouter);
+app.use("/signup", signuprouter, authLimiter);
+app.use("/signin", signinrouter, authLimiter);
 
 // **Route to Render Listings Page**
 

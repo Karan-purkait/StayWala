@@ -123,6 +123,7 @@
   <!-- Filters & Sorting Section -->
 <div class="filters">
   <form id="filterForm" class="filter-container">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
       <!-- Location Input -->
       <label for="location">Location:</label>
       <input type="text" id="location" name="location" placeholder="Enter location" class="filter-input">

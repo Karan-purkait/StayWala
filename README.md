@@ -109,7 +109,25 @@ StayWala/
 │-- schema.js
 │-- app.js
 │-- package.json
+```
 
+## Security Architecture
+
+![Security Architecture](https://i.imgur.com/3QZTxOl.png)
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Browser
+    participant AuthService
+    participant Database
+    User->>Browser: Credentials
+    Browser->>AuthService: POST /signin
+    AuthService->>Database: Verify
+    Database-->>AuthService: User
+    AuthService->>Browser: Secure Cookie
+    Browser->>User: Authenticated
+```
 
 ## 🤝 Contributing
 

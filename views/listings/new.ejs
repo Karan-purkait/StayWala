@@ -5,6 +5,7 @@
     <div class="listing-card">
       <h2 class="title-text">Create a New Listing</h2>
       <form method="POST" action="/listings" novalidate class="needs-validation">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
         
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>

@@ -1,10 +1,11 @@
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 const jwtAuthMiddleware = (req, res, next) => {
     const token = req.cookies?.auth_token;
     if(!token) return res.redirect("/signin");
     try{
         // Verify the JWT token
-        const secretkey="apertre2.0"
+        const secretkey = process.env.JWT_SECRET;
         const decoded = jwt.verify(token, secretkey);
         // Attach user information to the request object
         req.user = decoded
