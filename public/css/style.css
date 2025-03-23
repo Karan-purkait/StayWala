@@ -1,24 +1,26 @@
 :root {
-    --bg-color: #ebebeb;
-    --text-color: #000000;
-    --nav-bg: #f8f9fa;
-    --nav-text: #000000;
+  --bg-color: #ebebeb;
+  --text-color: #000000;
+  --nav-bg: #f8f9fa;
+  --nav-text: #000000;
 }
 
 .dark-mode {
-    --bg-color: #1e1e1e;
-    --text-color: #ffffff;
-    --nav-bg: #2c2c2c;
-    --nav-text: #ffffff;
+  --bg-color: #1e1e1e;
+  --text-color: #ffffff;
+  --nav-bg: #2c2c2c;
+  --nav-text: #ffffff;
 }
-body{
+
+body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   background-color: var(--bg-color) !important;
   color: var(--text-color) !important;
 }
-.container{
+
+.container {
   flex: 1;
 }
 
@@ -48,7 +50,6 @@ body{
 .f-info-links,
 .f-info-socials,
 .f-info-brand {
-  width: 100%;
   vertical-align: middle;
   display: flex;
   align-items: center;
@@ -93,43 +94,49 @@ body{
 .listing-link {
   text-decoration: none;
 }
-.card-img-overlay{
+
+.card-img-overlay {
   opacity: 0;
 }
-.card-img-overlay:hover{
+
+.card-img-overlay:hover {
   opacity: 0.2;
   background-color: white;
 }
 
 /*new*/
-.add-btn{
+.add-btn {
   background-color: #fe424d !important;
-border: none !important;
-opacity:1;
+  border: none !important;
+  opacity: 1;
 }
-.add-btn:hover{
-  opacity:0.8;
+
+.add-btn:hover {
+  opacity: 0.8;
   background-color: #fe424d !important;
 
 }
+
 /*edit*/
-.edit-btn{
+.edit-btn {
   background-color: #fe424d !important;
-border: none !important;
-opacity:1;
+  border: none !important;
+  opacity: 1;
 }
-.edit-btn:hover{
-  opacity:0.8;
+
+.edit-btn:hover {
+  opacity: 0.8;
   background-color: #fe424d !important;
 
 }
+
 /*show*/
-.show-img{
+.show-img {
   height: 30vh;
 }
 
-input::placeholder ,
-textarea::placeholder{
+input::placeholder,
+textarea::placeholder {
   color: var(--text-color) !important;
 }
 
@@ -140,7 +147,7 @@ textarea::placeholder{
   margin-bottom: 20px;
   width: 65%;
 
-  
+
 }
 
 .filter-container {
@@ -150,7 +157,8 @@ textarea::placeholder{
   align-items: center;
 }
 
-.filter-input, .slider {
+.filter-input,
+.slider {
   width: 150px;
   padding: 5px;
   border-radius: 5px;
