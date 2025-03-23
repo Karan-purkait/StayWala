@@ -17,6 +17,7 @@
       <div class="d-flex justify-content-between mt-3">
         <a href="/listings/<%= listing._id %>/edit" class="btn btn-primary">Edit this Listing</a>
         <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
           <button class="btn btn-danger">Delete this Listing </button>
         </form>
       </div>
@@ -25,6 +26,7 @@
     <div class="offset-3 col-8 mb-3">
       <h4>Leave a Review</h4>
       <form action="/listings/<%= listing.id %>/reviews" method="POST"  novalidate class="needs-validation">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
         <div class="mb-3 mt-3">
           <label for="rating" class="form-label">Rating</label>
           <input type="range" min="1" max="5" id="rating" name="review[rating]"class="form-range">

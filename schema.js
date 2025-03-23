@@ -3,10 +3,10 @@ const Joi = require("joi");
 // Define the validation schema for a "listing"
 module.exports.listingSchema = Joi.object({
   listing: Joi.object({
-    title: Joi.string().required(),          // Title is required
-    description: Joi.string().required(),    // Description is required
-    location: Joi.string().required(),       // Location is required
-    country: Joi.string().required(),        // Country is required
+    title: Joi.string().required().max(100),          // Title is required
+    description: Joi.string().required().max(2000),    // Description is required
+    location: Joi.string().required().max(100),       // Location is required
+    country: Joi.string().required().max(20),        // Country is required
     price: Joi.number().required().min(0),   // Price must be a number >= 0 and is required
     image: Joi.object({
       filename: Joi.string().optional(),
