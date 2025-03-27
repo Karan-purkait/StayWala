@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  orderer:
+    image: hyperledger/fabric-orderer:2.5
+    environment:
+      - ORDERER_GENERAL_LISTENPORT=7050
+      - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+    networks:
+      - review-net
+
+  peer0:
+    image: hyperledger/fabric-peer:2.5
+    environment:
+      - CORE_PEER_ID=peer0
+      - CORE_PEER_ADDRESS=peer0:7051
+      - CORE_PEER_LOCALMSPID=ReviewOrgMSP
+    depends_on:
+      - orderer
+    networks:
+      - review-net
+
+  cli:
+    image: hyperledger/fabric-tools:2.5
+    command: /bin/bash -c 'sleep infinity'
+    networks:
+      - review-net
