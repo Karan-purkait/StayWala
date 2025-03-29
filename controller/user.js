@@ -2,6 +2,7 @@
 const Listing = require("../models/listing.js");
 const Review = require("../models/review.js");
 const ExpressError=require("../util/ExpressError")
+const blockchainClient = require('../blockchain/client');
 async function gethomepage(req,res){
     //res.send("Welcome to Wanderlust!");
     res.render("listings/home");
@@ -98,6 +99,15 @@ async function delete_list_by_id(req,res,next){
 }
 async function post_review(req,res,next){
     try {
+        const reviewData = {
+            id: uuidv4(),
+            listingId: req.params.id,
+            rating: req.body.review.rating,
+            comment: req.body.review.comment,
+            author: req.user.email,
+            timestamp: Date.now()
+        };
+        await blockchainClient.submitReview(req.user.email, reviewData);
         const listing = await Listing.findById(req.params.id);
         if (!listing) throw new ExpressError(404, "Listing not found");
         const newReview = new Review(req.body.review);
@@ -106,7 +116,7 @@ async function post_review(req,res,next){
         await listing.save();
         res.redirect(`/listings/${listing._id}`);
     } catch (err) {
-        next(err);
+        next(new ExpressError(500, "Blockchain submission failed"));
     }
 }
 async function user_logout(req,res){
