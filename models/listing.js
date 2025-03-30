@@ -16,6 +16,11 @@ const listingSchema = new mongoose.Schema({
       ref: "Review",
     },
   ],
+  embedding: {
+    type: [Number],
+    index: true,
+    dimensions: 128
+  }
 });
 
 const Listing = mongoose.model("Listing", listingSchema);

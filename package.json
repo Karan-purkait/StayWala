@@ -31,6 +31,7 @@
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
     "method-override": "^3.0.0",
+    "ml-matrix": "^6.12.1",
     "mongoose": "^8.12.1",
     "node-cron": "^3.0.3",
     "react": "^19.0.0",
