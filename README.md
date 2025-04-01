@@ -141,12 +141,6 @@ Contributions are always welcome! Here’s how you can help:
 
 ---
 
-## 🛡️ License
-
-This project is licensed under the MIT License — feel free to use, share, and modify it.
-
----
-
 ## 📞 Contact
 
 For inquiries or collaborations, reach out via email:
