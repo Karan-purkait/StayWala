@@ -15,12 +15,13 @@ const { gethomepage,
     post_review,
     user_logout,
     } = require("../controller/user");
+const { applySubscriptionBenefits } = require('../middleware/subscription');
 // Routes
 app.get("/",gethomepage);
 app.get("/listings",jwtAuthMiddleware,get_listings );
 app.get("/listings/new",jwtAuthMiddleware,get_listings_new );
 app.get("/listings/:id", jwtAuthMiddleware,find_list_by_id);
-app.post("/listings",jwtAuthMiddleware,make_image_object, validateListing, post_listing);
+app.post("/listings",jwtAuthMiddleware,applySubscriptionBenefits,make_image_object, validateListing, post_listing);
 //app.post("/listings",post_listing);
 app.get("/listings/:id/edit",jwtAuthMiddleware,edit_list_by_id);
 app.put("/listings/:id",jwtAuthMiddleware,make_image_object, validateListing,put_listings_id );

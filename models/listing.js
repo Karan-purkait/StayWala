@@ -20,6 +20,14 @@ const listingSchema = new mongoose.Schema({
     type: [Number],
     index: true,
     dimensions: 128
+  },
+  isHighlighted: { 
+    type: Boolean,
+    default: false 
+  },
+  priority: { 
+    type: Number,
+    default: 0 
   }
 });
 
