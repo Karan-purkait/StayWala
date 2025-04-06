@@ -19,7 +19,12 @@ const userschema=new mongoose.Schema(
         subscription: { 
             type: mongoose.Schema.Types.ObjectId, 
             ref: 'Subscription' 
-        }
+        },
+        isAdmin: {
+            type: Boolean,
+            default: false
+        },
+        lastLogin: Date
     }
 )
 userschema.pre('save', async function(next) {

@@ -28,6 +28,11 @@ const listingSchema = new mongoose.Schema({
   priority: { 
     type: Number,
     default: 0 
+  },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true
   }
 });
 

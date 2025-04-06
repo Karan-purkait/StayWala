@@ -44,6 +44,7 @@ const authLimiter = rateLimit({
 app.use(statusMonitor()); // Monitoring middleware
 app.use('/api/subscription', subscriptionRouter);
 app.use('/api/admin', adminRouter);
+app.use('/admin', adminRouter);
 // **MongoDB Connection**
 async function main() {
   try {

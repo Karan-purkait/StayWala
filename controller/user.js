@@ -42,8 +42,11 @@ async function find_list_by_id(req,res,next){
 }*/
 async function post_listing(req, res, next) {
     try {
-        let { listing } = req.body;
-        const newListing = new Listing(listing);
+        const user = await User.findOne({ Email: req.user.email });
+        const newListing = new Listing({
+            ...req.body.listing,
+            owner: user._id
+          });
         await newListing.save();
         res.redirect("/listings");
     } catch (err) {
