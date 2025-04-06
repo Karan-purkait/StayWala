@@ -1,5 +1,3 @@
-
-
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -18,6 +16,8 @@ const deleteOldData = require('./scripts/DataCleanup');
 require('dotenv').config();
 const helmet = require('helmet');
 const app = express();
+const subscriptionRouter = require('./routes/subscription');
+const adminRouter = require('./routes/admin');
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy({
     directives: {
@@ -42,7 +42,8 @@ const authLimiter = rateLimit({
 });
 
 app.use(statusMonitor()); // Monitoring middleware
-
+app.use('/api/subscription', subscriptionRouter);
+app.use('/api/admin', adminRouter);
 // **MongoDB Connection**
 async function main() {
   try {
