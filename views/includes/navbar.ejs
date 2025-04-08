@@ -26,6 +26,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/logout" style="font-size: 1.1rem;">Logout</a>
                 </li>
+                <% if (user?.isAdmin) { %>
+                    <li class="nav-item">
+                      <a class="nav-link" href="../admin/dashboard.ejs">Admin Dashboard</a>
+                    </li>
+                <% } %>
             </ul>
             <div class="pt-1 px-1">
                 <input class="form-check-input d-none" type="checkbox" id="darkModeToggle">

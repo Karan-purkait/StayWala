@@ -1,0 +1,62 @@
+<% layout('../layouts/boilerplates') %>
+<div class="container mt-4">
+  <h2>Admin Dashboard</h2>
+  
+  <div class="row mb-4">
+    <div class="col-md-3">
+      <div class="card text-white bg-primary">
+        <div class="card-body">
+          <h5>Total Listings</h5>
+          <h2 id="totalListings">0</h2>
+        </div>
+      </div>
+    </div>
+    <!-- Repeat for other metrics -->
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <canvas id="userChart"></canvas>
+    </div>
+    <div class="col-md-6">
+      <canvas id="revenueChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  fetch('/api/admin/metrics')
+    .then(res => res.json())
+    .then(data => {
+      // Update metric values
+      document.querySelectorAll('[data-metric]').forEach(el => {
+        el.textContent = data[el.dataset.metric];
+      });
+
+      // User Distribution Pie Chart
+      new Chart(document.getElementById('userChart'), {
+        type: 'pie',
+        data: {
+          labels: ['Mess Owners', 'Students'],
+          datasets: [{
+            data: [data.messOwners, data.studentUsers],
+            backgroundColor: ['#4e73df', '#1cc88a']
+          }]
+        }
+      });
+
+      // Revenue Bar Chart
+      new Chart(document.getElementById('revenueChart'), {
+        type: 'bar',
+        data: {
+          labels: ['Revenue'],
+          datasets: [{
+            label: 'Total Revenue',
+            data: [data.totalRevenue],
+            backgroundColor: '#36b9cc'
+          }]
+        }
+      });
+    });
+</script>
